@@ -1,16 +1,19 @@
-Python-based computation of momentum maps and velocity gradients.pdf
+# Python-based computation of momentum maps and velocity gradients.pdf
 
-Context. Students, professors, and scientists who work in astrophysics actively use .fits files, which show maps of the star clouds,
+	Context. 
+Students, professors, and scientists who work in astrophysics actively use .fits files, which show maps of the star clouds,
 for their own purposes. However, the calculation of 0-2 moment maps from these files is a difficult procedure which requires a lot
 of time to calculate and an understanding of the particular features of the .fits file they use. Some .fits files use non-SI units, which
 makes it difficult to work with them, especially when calculating 0-2 momentum maps. The calculation of velocity gradients is a
 complex task with a large number of calculations that require the work of all the factors described. At the moment there are good
 solutions for calculating velocity gradients in Julia programming language, but the task was set to calculate momentum maps 0-2
 and velocity gradients in Python.
-Aims. Develop code in Python that will adapt or will ask to help with adapting the .fits file to the SI system, correctly and quickly
+	Aims. 
+Develop code in Python that will adapt or will ask to help with adapting the .fits file to the SI system, correctly and quickly
 calculate moment maps 0-2 and velocity gradients in a given particular dataset and investigate their consequences for the observed
 system’s dynamics and magnetic field configuration.
-Methods. This work uses Python 3, astropy.io.fits, numpy, and matplotlib.pyplot libraries, which are used to read .fits files,
+	Methods. 
+This work uses Python 3, astropy.io.fits, numpy, and matplotlib.pyplot libraries, which are used to read .fits files,
 process information in 3D ranges, and calculate totals to produce 0-2 moment maps and velocity gradients map. Also the study made
 use of a 3D PPV cube generated from FITS data to illustrate the Position-Position-Velocity distribution. The VGT QU mv error
 function, which takes the 3D PPV cube as input and generates the pseudo Stokes parameters for a particular velocity range, was
@@ -19,12 +22,14 @@ Ua). To improve visualization, the imfilter gaussian function was used to apply 
 angle (psi) was calculated by applying the atan function to the ratio of Ui and Qi, followed by a 90-degree rotation to identify
 the direction of the magnetic field. Using matplotlib’s quiver function, the intensity map (Ii) from another FITS file was read and
 overlaid with gradient vectors denoting the polarization angle.
-Results. The result of this work is the finished code, which can be used on a web site or desktop application to calculate moments
+	Results. 
+The result of this work is the finished code, which can be used on a web site or desktop application to calculate moments
 0-2 and velocity gradients, entering data about the structure of the file and its features, and getting pictures of moment maps 0-
 2. The ”Velocity Gradients” that plot shows the observed system’s intensity map with superimposed gradient vectors indicating
 the direction of velocity gradients. The figure provides useful visual insights into the dataset’s velocity structure and polarization
 features.
-Conclusion. A unified calculation of 0-2 moment maps is not an easy task based on the complexity of adapting the code to all
+	Conclusion. 
+A unified calculation of 0-2 moment maps is not an easy task based on the complexity of adapting the code to all
 variants of .fits files, because these files are used with different structures for different needs of researchers. The different structure
 refers to additional information in the file header, file data type, file size and dimensions, which can also be confusing to the person
 reading the file and calculating 0-2 momentum maps and velocity gradients. The analysis of velocity gradients and polarization
@@ -32,7 +37,7 @@ qualities contributes to a better understanding of the observed system’s dynam
 study show the importance of velocity gradients in investigating the underlying physical processes and their impact on the observed
 phenomena.
 
-	Calculations and formulas are used to obtain Momentum Maps 0,1 and 2.
+# Calculations and formulas are used to obtain Momentum Maps 0,1 and 2.
 
 The MomentMaps class was created to visualise moment maps 0, 1 and 2. This class has methods:
 1) Constructor, which takes the file path as an argument and stores it in an object of the class
@@ -77,17 +82,17 @@ pip install -r requirements.txt
 
 For better understanding, it could be simplified to:
 
-# Compute the moment 0 map
+Compute the moment 0 map
 moment0 = np.sum(data_cube, axis=0)
 
-# Compute the moment 1 map
+Compute the moment 1 map
 moment1 = np.sum(data_cube * vel_axis[:, None, None], axis=0) / np.sum(data_cube, axis=0)
 
-# Compute the moment 2 map
+Compute the moment 2 map
 mean_velocity = np.sum(data_cube * vel_axis[:, None, None], axis=0) / np.sum(data_cube, axis=0)
 moment2 = np.sqrt(np.sum(data_cube * (vel_axis[:, None, None] - mean_velocity)**2, axis=0) / np.sum(data_cube, axis=0))
 
-	Calculations and formulas are used to obtain Velocity Gradients.
+# Calculations and formulas are used to obtain Velocity Gradients.
 
 VGT\_QU\_mv\_error: Although not explicitly visible in the code, this function is used to calculate the pseudo Stokes parameters (Qi and Ui) as well as their uncertainty (Qie and Uie). These factors represent the data's polarization qualities. The particular implementation of VGT\_QU\_mv\_error is not accessible, although it is likely to entail some type of statistical analysis and cube manipulation (d).
 
@@ -101,7 +106,7 @@ The programme computes coordinate values (RA, DEC) and line-of-sight velocities 
 
 imshow and quiver are matplotlib.pyplot library functions for viewing the intensity map and superimposing the gradient vectors, respectively. They allow the "Velocity Gradients" plot to be created by presenting the data and overlaying the gradient vectors on top of it.
 
-	Computation of velocity gradients
+# Computation of velocity gradients
 
 To open the FITS file containing the intensity map data, use a Python FITS package such as astropy.io.fits.
 
@@ -119,7 +124,7 @@ Using the title function from matplotlib.pyplot, add a descriptive title to the 
 
 To display the plot on your screen for visualization and analysis, use the show function from matplotlib.pyplot.
 
-	Improved description of how Velocity Gradients are calculated
+# Improved description of how Velocity Gradients are calculated
 
 VGT\_QU\_mv\_error(d, dn, Ni, Nf, noise): The Pseudo Stokes parameters, Q and U, as well as their uncertainties, Qie and Uie, are calculated using this function. The 3D PPV cube d, sub-block size n, initial velocity index Ni, final velocity index Nf, and noise level noise are all input parameters. The calculations required to determine the pseudo Stokes parameters and associated uncertainties are completed.
 
