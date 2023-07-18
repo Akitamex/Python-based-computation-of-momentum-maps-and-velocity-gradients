@@ -1,6 +1,8 @@
 # Python-based computation of momentum maps and velocity gradients.pdf
 Abstract
-	Context. 
+
+Context.
+
 Students, professors, and scientists who work in astrophysics actively use .fits files, which show maps of the star clouds,
 for their own purposes. However, the calculation of 0-2 moment maps from these files is a difficult procedure which requires a lot
 of time to calculate and an understanding of the particular features of the .fits file they use. Some .fits files use non-SI units, which
@@ -8,11 +10,15 @@ makes it difficult to work with them, especially when calculating 0-2 momentum m
 complex task with a large number of calculations that require the work of all the factors described. At the moment there are good
 solutions for calculating velocity gradients in Julia programming language, but the task was set to calculate momentum maps 0-2
 and velocity gradients in Python.
-	Aims. 
+
+Aims.
+
 Develop code in Python that will adapt or will ask to help with adapting the .fits file to the SI system, correctly and quickly
 calculate moment maps 0-2 and velocity gradients in a given particular dataset and investigate their consequences for the observed
 system’s dynamics and magnetic field configuration.
-	Methods. 
+
+Methods. 
+
 This work uses Python 3, astropy.io.fits, numpy, and matplotlib.pyplot libraries, which are used to read .fits files,
 process information in 3D ranges, and calculate totals to produce 0-2 moment maps and velocity gradients map. Also the study made
 use of a 3D PPV cube generated from FITS data to illustrate the Position-Position-Velocity distribution. The VGT QU mv error
@@ -22,13 +28,17 @@ Ua). To improve visualization, the imfilter gaussian function was used to apply 
 angle (psi) was calculated by applying the atan function to the ratio of Ui and Qi, followed by a 90-degree rotation to identify
 the direction of the magnetic field. Using matplotlib’s quiver function, the intensity map (Ii) from another FITS file was read and
 overlaid with gradient vectors denoting the polarization angle.
-	Results. 
+
+Results. 
+
 The result of this work is the finished code, which can be used on a web site or desktop application to calculate moments
 0-2 and velocity gradients, entering data about the structure of the file and its features, and getting pictures of moment maps 0-
 2. The ”Velocity Gradients” that plot shows the observed system’s intensity map with superimposed gradient vectors indicating
 the direction of velocity gradients. The figure provides useful visual insights into the dataset’s velocity structure and polarization
 features.
-	Conclusion. 
+
+Conclusion. 
+
 A unified calculation of 0-2 moment maps is not an easy task based on the complexity of adapting the code to all
 variants of .fits files, because these files are used with different structures for different needs of researchers. The different structure
 refers to additional information in the file header, file data type, file size and dimensions, which can also be confusing to the person
